@@ -245,6 +245,21 @@ start = @&lt;wikidata-disease&gt;
 		
 
 <script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":166});});</script>
-
+<script src="./shex-core-browserify.js"></script>
+<script src="./shex-parser-browserify.js"></script>
+<script src="./ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+  const old = document.getElementsByName("wpschema-text")[0]
+  const nuw = document.createElement("div")
+  Array.from(old.attributes).forEach(attr => {
+    nuw.setAttribute(attr.name, attr.value)
+  })
+  nuw.style.height = "60ex"
+  const e = ace.edit(nuw)
+  e.setValue(old.value.replace(/\t/g, "    "), 1)
+  e.setTheme("ace/theme/dawn")
+  e.session.setMode("ace/mode/shexc")
+  old.replaceWith(nuw)
+</script>
 
 <div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><a href="https://wikidata-shex.wmflabs.org/w/index.php?search=&amp;title=Special%3ASearch&amp;fulltext=1" class="mw-searchSuggest-link"><div class="suggestions-special" style="display: block;"><div class="special-label">containing...</div><div class="special-query"></div></div></a></div></body></html>
